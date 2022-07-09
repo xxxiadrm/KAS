@@ -44,7 +44,7 @@ public class UserController {
             // 필수 값 누락
             if ((!node.has("name")
                     || (!node.has("age")))) {
-                throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, KasStatus.PRE2002);
+                throw new HttpStatusException(HttpStatus.BAD_REQUEST, KasStatus.PRI2002);
             }
 
             Users users = new Users();
@@ -55,8 +55,6 @@ public class UserController {
             throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, KasStatus.PRE2002);
         } catch (JsonProcessingException e) {
             throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, KasStatus.PRE2003);
-        } catch (HttpStatusException e) {
-            throw new RuntimeException(e);
         }
 
         ResultMessage resultMessage = new ResultMessage();
