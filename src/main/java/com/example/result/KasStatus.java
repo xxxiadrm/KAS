@@ -12,9 +12,6 @@ public enum KasStatus {
     SUCCESS("000000", "success"),
     FAIL("999999", "fail"),
 
-    /**
-     * 상품 상태 코드
-     */
     PRI2001("RPE3001", "파라미터 오류"),
     PRI2002("PRI2002", "필수 요청 값 누락"),
     PRE2001("PRE2001", "서버 내부 오류"),
