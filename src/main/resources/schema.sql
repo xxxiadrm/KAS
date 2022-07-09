@@ -40,4 +40,6 @@ values
 INSERT INTO account_history
 (account_id, depowith_yn, deposit_amt, deposit_date)
 values
-    ('1000-01', 'Y', 100000, now());
+    ('1000-01', 'Y', 100000, now()),
+    ('1000-01', 'N', 20000, now()),
+    ('1000-01', 'N', 30000, now());

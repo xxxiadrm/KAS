@@ -42,4 +42,17 @@
             (#{id}, #{accountHistory.depowith}, #{accountHistory.amount}, now())
     </insert>
 
+    <select id="selectAmountByUser" parameterType="com.example.kas.model.dto.Users" resultMap="selectAccount-result">
+        SELECT
+            ac.account_id,
+            ah.depowith_yn,
+            ah.deposit_amt,
+            ah.deposit_date
+        FROM
+            account ac LEFT JOIN account_history ah ON (ac.account_id = ah.account_id)
+        WHERE
+            ac.user_id = #{id}
+        ORDER BY ah.deposit_date ASC
+    </select>
+
 </mapper>

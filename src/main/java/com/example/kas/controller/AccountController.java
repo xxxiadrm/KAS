@@ -16,10 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -108,5 +105,20 @@ public class AccountController {
         resultMessage.setStatus(KasStatus.SUCCESS.getCode());
         resultMessage.setDesc(KasStatus.SUCCESS.getMessage());
         return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "v1/account/amount", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResultMessage> getAmountByUser(@RequestParam(value = "id") int id) {
+
+        Users users = new Users();
+        users.setId(id);
+        List<Account> accounts = accountService.getAmountByUser(users);
+
+
+        ResultMessage resultMessage = new ResultMessage();
+        resultMessage.setStatus(KasStatus.SUCCESS.getCode());
+        resultMessage.setDesc(KasStatus.SUCCESS.getMessage());
+        resultMessage.setResult(accounts);
+        return new ResponseEntity<>(resultMessage, HttpStatus.OK);
     }
 }
